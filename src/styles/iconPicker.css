@@ -1,82 +1,530 @@
-.icon-picker {
-display: grid;
-grid-template-columns: repeat(5, minmax(0, 1fr));
-gap: 8px;
-}
+/* =========================================================
+   💎 ICON PICKER — ULTRA PREMIUM / ÉLASTIQUE / DIAMANT
+   ========================================================= */
 
-.icon-picker__item {
-display: flex;
-align-items: center;
-justify-content: center;
-
-aspect-ratio: 1;
-
-padding: 0;
-
-border: 1px solid #e5e5e5;
-border-radius: 12px;
-
-background: #ffffff;
-color: #525252;
-
-cursor: pointer;
-
-transition:
-background-color 150ms ease,
-border-color 150ms ease,
-color 150ms ease,
-transform 150ms ease,
-box-shadow 150ms ease;
-}
-
-.icon-picker__item:hover {
-border-color: #a3a3a3;
-background: #fafafa;
-color: #171717;
-
-transform: translateY(-1px);
-}
-
-.icon-picker__item:active {
-transform: scale(0.95);
-}
-
-.icon-picker__item--selected {
-border-color: #171717;
-background: #171717;
-color: #ffffff;
-
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-}
-
-.icon-picker__item--selected:hover {
-border-color: #171717;
-background: #262626;
-color: #ffffff;
-}
-
-.icon-picker__item:focus-visible {
-outline: 3px solid rgba(23, 23, 23, 0.18);
-outline-offset: 2px;
-}
-
-.icon-picker__item svg {
-width: 24px;
-height: 24px;
-}
-
-@media (max-width: 420px) {
-.icon-picker {
-grid-template-columns: repeat(5, minmax(0, 1fr));
-gap: 6px;
-}
-
-.icon-picker__item {
-border-radius: 10px;
-}
-
-.icon-picker__item svg {
-width: 21px;
-height: 21px;
-}
-}
+   .icon-picker {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+  
+    transition:
+      gap 0.55s cubic-bezier(.16, 1.4, .3, 1),
+      transform 0.6s cubic-bezier(.16, 1.4, .3, 1);
+  }
+  
+  
+  /* =========================================================
+     💎 ITEM
+     ========================================================= */
+  
+  .icon-picker__item {
+    position: relative;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    aspect-ratio: 1;
+  
+    padding: 0;
+  
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+  
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #fafafa 48%,
+        #f3f3f3 100%
+      );
+  
+    color: #525252;
+  
+    cursor: pointer;
+  
+    overflow: hidden;
+  
+    transform:
+      translateY(0)
+      scale(1)
+      rotate(0deg);
+  
+    box-shadow:
+      0 2px 5px rgba(0,0,0,0.025),
+      inset 0 1px 0 rgba(255,255,255,0.95);
+  
+    transition:
+      transform 0.55s cubic-bezier(.16, 1.7, .3, 1),
+      background 0.5s cubic-bezier(.2, 1, .3, 1),
+      border-color 0.45s ease,
+      color 0.35s ease,
+      box-shadow 0.6s cubic-bezier(.16, 1.4, .3, 1),
+      border-radius 0.5s cubic-bezier(.16, 1.4, .3, 1);
+  }
+  
+  
+  /* =========================================================
+     ✨ REFLET DIAMANT
+     ========================================================= */
+  
+  .icon-picker__item::before {
+    content: "";
+  
+    position: absolute;
+  
+    top: -100%;
+    left: -130%;
+  
+    width: 65%;
+    height: 300%;
+  
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.05) 35%,
+        rgba(255,255,255,0.95) 50%,
+        rgba(255,255,255,0.05) 65%,
+        transparent 100%
+      );
+  
+    transform: rotate(28deg);
+  
+    opacity: 0;
+  
+    pointer-events: none;
+  
+    transition:
+      left 0.85s cubic-bezier(.16, 1, .3, 1),
+      opacity 0.3s ease;
+  }
+  
+  
+  /* =========================================================
+     💎 FACETTE INTERNE
+     ========================================================= */
+  
+  .icon-picker__item::after {
+    content: "";
+  
+    position: absolute;
+  
+    inset: 4px;
+  
+    border-radius: 9px;
+  
+    border: 1px solid rgba(255,255,255,0.72);
+  
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.45),
+        transparent 32%,
+        transparent 70%,
+        rgba(0,0,0,0.025)
+      );
+  
+    transform:
+      rotate(0deg)
+      scale(0.94);
+  
+    opacity: 0.75;
+  
+    pointer-events: none;
+  
+    transition:
+      transform 0.65s cubic-bezier(.16, 1.6, .3, 1),
+      opacity 0.4s ease,
+      border-color 0.4s ease;
+  }
+  
+  
+  /* =========================================================
+     🖱️ HOVER
+     ========================================================= */
+  
+  .icon-picker__item:hover {
+    border-color: #b5b5b5;
+  
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff,
+        #eeeeee 55%,
+        #e4e4e4
+      );
+  
+    color: #171717;
+  
+    transform:
+      translateY(-5px)
+      scale(1.09)
+      rotate(-2deg);
+  
+    border-radius: 15px;
+  
+    box-shadow:
+      0 8px 15px rgba(0,0,0,0.08),
+      0 0 0 3px rgba(23,23,23,0.025),
+      inset 0 1px 0 rgba(255,255,255,1);
+  }
+  
+  
+  .icon-picker__item:hover::before {
+    left: 145%;
+    opacity: 1;
+  }
+  
+  
+  .icon-picker__item:hover::after {
+    transform:
+      rotate(45deg)
+      scale(0.96);
+  
+    opacity: 1;
+  
+    border-color: rgba(255,255,255,0.95);
+  }
+  
+  
+  /* =========================================================
+     ⚡ ACTIVE — COMPRESSION ÉLASTIQUE
+     ========================================================= */
+  
+  .icon-picker__item:active {
+    transform:
+      translateY(1px)
+      scale(0.84)
+      rotate(2deg);
+  
+    border-radius: 9px;
+  
+    box-shadow:
+      0 2px 4px rgba(0,0,0,0.08),
+      inset 0 2px 4px rgba(0,0,0,0.05);
+  
+    transition:
+      transform 0.08s cubic-bezier(.4,0,.8,.2),
+      box-shadow 0.08s ease,
+      border-radius 0.08s ease;
+  }
+  
+  
+  /* =========================================================
+     💎 SÉLECTIONNÉ
+     ========================================================= */
+  
+  .icon-picker__item--selected {
+    border-color: #171717;
+  
+    background:
+      linear-gradient(
+        145deg,
+        #383838 0%,
+        #171717 45%,
+        #050505 100%
+      );
+  
+    color: #ffffff;
+  
+    transform:
+      scale(1.035);
+  
+    box-shadow:
+      0 5px 12px rgba(0,0,0,0.16),
+      0 0 0 3px rgba(23,23,23,0.06),
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      inset 0 -2px 5px rgba(0,0,0,0.25);
+  }
+  
+  
+  /* Facette sélectionnée */
+  
+  .icon-picker__item--selected::after {
+    border-color: rgba(255,255,255,0.18);
+  
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.18),
+        transparent 30%,
+        transparent 65%,
+        rgba(255,255,255,0.06)
+      );
+  
+    transform:
+      rotate(0deg)
+      scale(0.94);
+  }
+  
+  
+  /* Reflet sélectionné */
+  
+  .icon-picker__item--selected::before {
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.75),
+        rgba(255,255,255,0.08),
+        transparent
+      );
+  }
+  
+  
+  /* =========================================================
+     ✨ HOVER SÉLECTIONNÉ
+     ========================================================= */
+  
+  .icon-picker__item--selected:hover {
+    border-color: #454545;
+  
+    background:
+      linear-gradient(
+        145deg,
+        #4a4a4a,
+        #242424 48%,
+        #0b0b0b
+      );
+  
+    color: #ffffff;
+  
+    transform:
+      translateY(-6px)
+      scale(1.13)
+      rotate(3deg);
+  
+    box-shadow:
+      0 10px 20px rgba(0,0,0,0.23),
+      0 0 0 5px rgba(23,23,23,0.07),
+      inset 0 1px 0 rgba(255,255,255,0.28),
+      inset 0 -3px 7px rgba(0,0,0,0.3);
+  }
+  
+  
+  .icon-picker__item--selected:hover::before {
+    left: 145%;
+    opacity: 1;
+  }
+  
+  
+  .icon-picker__item--selected:hover::after {
+    transform:
+      rotate(45deg)
+      scale(0.97);
+  
+    border-color: rgba(255,255,255,0.35);
+  }
+  
+  
+  /* =========================================================
+     🔷 ICÔNE
+     ========================================================= */
+  
+  .icon-picker__item svg {
+    position: relative;
+  
+    z-index: 2;
+  
+    width: 24px;
+    height: 24px;
+  
+    transform:
+      scale(1)
+      rotate(0deg)
+      translateY(0);
+  
+    transition:
+      transform 0.6s cubic-bezier(.16, 1.7, .3, 1),
+      color 0.35s ease,
+      stroke-width 0.35s ease;
+  }
+  
+  
+  .icon-picker__item:hover svg {
+    transform:
+      scale(1.18)
+      rotate(-5deg)
+      translateY(-1px);
+  }
+  
+  
+  .icon-picker__item--selected svg {
+    transform:
+      scale(1.08);
+  }
+  
+  
+  .icon-picker__item--selected:hover svg {
+    transform:
+      scale(1.23)
+      rotate(8deg)
+      translateY(-2px);
+  }
+  
+  
+  /* =========================================================
+     💥 ANIMATION DE SÉLECTION
+     ========================================================= */
+  
+  @keyframes icon-picker-selected {
+    0% {
+      transform:
+        scale(0.82)
+        rotate(-8deg);
+    }
+  
+    45% {
+      transform:
+        scale(1.16)
+        rotate(5deg);
+    }
+  
+    70% {
+      transform:
+        scale(0.98)
+        rotate(-2deg);
+    }
+  
+    100% {
+      transform:
+        scale(1.035)
+        rotate(0deg);
+    }
+  }
+  
+  .icon-picker__item--selected {
+    animation:
+      icon-picker-selected
+      0.65s
+      cubic-bezier(.16, 1.4, .3, 1);
+  }
+  
+  
+  /* =========================================================
+     💎 MICRO-PULSE DU SÉLECTIONNÉ
+     ========================================================= */
+  
+  @keyframes icon-picker-diamond {
+    0%,
+    100% {
+      box-shadow:
+        0 5px 12px rgba(0,0,0,0.16),
+        0 0 0 3px rgba(23,23,23,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+  
+    50% {
+      box-shadow:
+        0 7px 16px rgba(0,0,0,0.2),
+        0 0 0 5px rgba(23,23,23,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+  }
+  
+  .icon-picker__item--selected {
+    animation:
+      icon-picker-selected 0.65s cubic-bezier(.16, 1.4, .3, 1),
+      icon-picker-diamond 3.2s ease-in-out 0.65s infinite;
+  }
+  
+  
+  /* =========================================================
+     🎯 FOCUS CLAVIER
+     ========================================================= */
+  
+  .icon-picker__item:focus-visible {
+    outline: none;
+  
+    border-color: #171717;
+  
+    box-shadow:
+      0 0 0 3px #ffffff,
+      0 0 0 6px rgba(23,23,23,0.18),
+      0 8px 18px rgba(0,0,0,0.12);
+  
+    transform:
+      translateY(-3px)
+      scale(1.06);
+  
+    transition:
+      transform 0.45s cubic-bezier(.16, 1.5, .3, 1),
+      box-shadow 0.45s cubic-bezier(.16, 1.3, .3, 1),
+      border-color 0.35s ease;
+  }
+  
+  
+  /* =========================================================
+     📱 MOBILE
+     ========================================================= */
+  
+  @media (max-width: 420px) {
+    .icon-picker {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 6px;
+  
+      transition:
+        gap 0.5s cubic-bezier(.16, 1.4, .3, 1);
+    }
+  
+    .icon-picker__item {
+      border-radius: 10px;
+  
+      transition:
+        transform 0.5s cubic-bezier(.16, 1.7, .3, 1),
+        background 0.45s ease,
+        border-color 0.4s ease,
+        box-shadow 0.5s cubic-bezier(.16, 1.4, .3, 1),
+        border-radius 0.45s cubic-bezier(.16, 1.4, .3, 1);
+    }
+  
+    .icon-picker__item::after {
+      border-radius: 7px;
+    }
+  
+    .icon-picker__item svg {
+      width: 21px;
+      height: 21px;
+    }
+  
+    .icon-picker__item:hover {
+      transform:
+        translateY(-3px)
+        scale(1.06)
+        rotate(-1deg);
+    }
+  
+    .icon-picker__item--selected:hover {
+      transform:
+        translateY(-4px)
+        scale(1.09)
+        rotate(2deg);
+    }
+  }
+  
+  
+  /* =========================================================
+     🧘 ACCESSIBILITÉ
+     ========================================================= */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .icon-picker *,
+    .icon-picker *::before,
+    .icon-picker *::after {
+      animation: none !important;
+  
+      transition:
+        color 0.15s ease,
+        background-color 0.15s ease,
+        border-color 0.15s ease !important;
+    }
+  
+    .icon-picker__item:hover,
+    .icon-picker__item--selected:hover,
+    .icon-picker__item:active {
+      transform: none !important;
+    }
+  }
+  

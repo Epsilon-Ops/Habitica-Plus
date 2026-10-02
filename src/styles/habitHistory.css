@@ -1,271 +1,1409 @@
-.habit-history {
-  margin-top: 12px;
-}
-
-.habit-history__toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-
-  padding: 6px 9px;
-
-  border: 0;
-  border-radius: 7px;
-
-  background: transparent;
-  color: #737373;
-
-  font-size: 12px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background-color 150ms ease,
-    color 150ms ease;
-}
-
-.habit-history__toggle:hover {
-  background: #f5f5f5;
-  color: #171717;
-}
-
-.habit-history__toggle:focus-visible {
-  outline: 3px solid rgba(23, 23, 23, 0.15);
-  outline-offset: 2px;
-}
-
-.habit-history__toggle-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 16px;
-  height: 16px;
-
-  font-size: 13px;
-}
-
-.habit-history__content {
-  margin-top: 8px;
-
-  animation: habit-history-open 180ms ease-out;
-}
-
-.habit-history-calendar {
-  width: min(100%, 380px);
-
-  padding: 16px;
-
-  background: #fafafa;
-  border: 1px solid #e5e5e5;
-  border-radius: 14px;
-}
-
-.habit-history-calendar__header {
-  display: grid;
-  grid-template-columns: 32px 1fr 32px;
-  align-items: center;
-
-  margin-bottom: 16px;
-}
-
-.habit-history-calendar__title {
-  text-align: center;
-}
-
-.habit-history-calendar__title h3 {
-  margin: 0;
-
-  font-size: 14px;
-  font-weight: 700;
-  color: #171717;
-}
-
-.habit-history-calendar__title span {
-  display: block;
-
-  margin-top: 3px;
-
-  font-size: 10px;
-  color: #a3a3a3;
-}
-
-.habit-history-calendar__nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 32px;
-  height: 32px;
-
-  padding: 0;
-
-  border: 0;
-  border-radius: 8px;
-
-  background: transparent;
-  color: #737373;
-
-  font-size: 21px;
-  line-height: 1;
-
-  cursor: pointer;
-
-  transition:
-    background-color 150ms ease,
-    color 150ms ease;
-}
-
-.habit-history-calendar__nav:hover {
-  background: #e5e5e5;
-  color: #171717;
-}
-
-.habit-history-calendar__weekdays,
-.habit-history-calendar__days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-}
-
-.habit-history-calendar__weekdays {
-  margin-bottom: 5px;
-}
-
-.habit-history-calendar__weekdays span {
-  text-align: center;
-
-  font-size: 10px;
-  font-weight: 700;
-  color: #a3a3a3;
-}
-
-.habit-history-calendar__day {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  aspect-ratio: 1;
-
-  padding: 0;
-
-  border: 1px solid transparent;
-  border-radius: 8px;
-
-  background: #ffffff;
-  color: #525252;
-
-  font-family: inherit;
-  font-size: 11px;
-
-  cursor: pointer;
-
-  transition:
-    background-color 120ms ease,
-    color 120ms ease,
-    border-color 120ms ease,
-    transform 120ms ease;
-}
-
-.habit-history-calendar__day:hover:not(:disabled) {
-  background: #e5e5e5;
-  transform: scale(1.04);
-}
-
-.habit-history-calendar__day--empty {
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.habit-history-calendar__day--completed {
-  background: #171717;
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.habit-history-calendar__day--completed:hover {
-  background: #404040;
-}
-
-.habit-history-calendar__day--today {
-  border-color: #171717;
-  font-weight: 700;
-}
-
-.habit-history-calendar__day--completed.habit-history-calendar__day--today {
-  border-color: #737373;
-}
-
-.habit-history-calendar__day--future {
-  background: #f5f5f5;
-  color: #d4d4d4;
-  cursor: default;
-}
-
-.habit-history-calendar__day:disabled {
-  opacity: 0.7;
-}
-
-.habit-history-calendar__legend {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  margin-top: 14px;
-  padding-top: 12px;
-
-  border-top: 1px solid #e5e5e5;
-
-  font-size: 10px;
-  color: #a3a3a3;
-}
-
-.habit-history-calendar__legend span {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.habit-history-calendar__legend-dot {
-  display: inline-block;
-
-  width: 8px;
-  height: 8px;
-
-  border-radius: 3px;
-}
-
-.habit-history-calendar__legend-dot--completed {
-  background: #171717;
-}
-
-.habit-history-calendar__legend-dot--today {
-  border: 1px solid #171717;
-  background: #ffffff;
-}
-
-@keyframes habit-history-open {
-  from {
+/* =========================================================
+   💎 HABIT HISTORY — DIAMOND PREMIUM / ULTRA ÉLASTIQUE
+   🚫 Aucun blur()
+   ✨ Facettes + reflets + scintillements + elastic
+   ========================================================= */
+
+   .habit-history {
+    margin-top: 12px;
+  
+    perspective: 1400px;
+  
+    transition:
+      margin 0.6s cubic-bezier(.16, 1.4, .3, 1),
+      transform 0.6s cubic-bezier(.16, 1.4, .3, 1);
+  }
+  
+  
+  /* =========================================================
+     💎 TOGGLE
+     ========================================================= */
+  
+  .habit-history__toggle {
+    position: relative;
+    isolation: isolate;
+  
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  
+    padding: 7px 10px;
+  
+    overflow: hidden;
+  
+    border: 1px solid #e5e5e5;
+    border-radius: 11px;
+  
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f8f8f8 28%,
+        #ffffff 48%,
+        #eeeeee 72%,
+        #ffffff 100%
+      );
+  
+    color: #737373;
+  
+    font-size: 12px;
+    font-weight: 650;
+  
+    cursor: pointer;
+  
+    box-shadow:
+      0 2px 5px rgba(0,0,0,0.025),
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 -1px 0 rgba(0,0,0,0.025);
+  
+    transform:
+      translateY(0)
+      translateZ(0)
+      scale(1)
+      rotateX(0);
+  
+    transition:
+      transform 0.55s cubic-bezier(.16, 1.6, .3, 1),
+      background 0.65s cubic-bezier(.2, 1, .3, 1),
+      color 0.35s ease,
+      border-color 0.5s ease,
+      box-shadow 0.65s cubic-bezier(.16, 1.4, .3, 1),
+      padding 0.5s cubic-bezier(.16, 1.4, .3, 1);
+  }
+  
+  
+  /* Facette diamant */
+  
+  .habit-history__toggle::before {
+    content: "";
+  
+    position: absolute;
+    inset: -100%;
+  
+    z-index: -1;
+  
+    background:
+      linear-gradient(
+        115deg,
+        transparent 35%,
+        rgba(255,255,255,0.2) 42%,
+        rgba(255,255,255,1) 49%,
+        rgba(255,255,255,0.18) 55%,
+        transparent 63%
+      );
+  
+    transform:
+      translateX(-45%)
+      rotate(12deg);
+  
     opacity: 0;
-    transform: translateY(-4px);
+  
+    pointer-events: none;
+  
+    transition:
+      transform 0.95s cubic-bezier(.16, 1, .3, 1),
+      opacity 0.35s ease;
   }
-
-  to {
+  
+  
+  /* Facette extérieure */
+  
+  .habit-history__toggle::after {
+    content: "";
+  
+    position: absolute;
+    inset: 2px;
+  
+    border-radius: 8px;
+  
+    border:
+      1px solid rgba(255,255,255,0.85);
+  
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.6),
+        transparent 40%,
+        rgba(255,255,255,0.3)
+      );
+  
+    opacity: 0;
+  
+    pointer-events: none;
+  
+    transform:
+      scale(0.85)
+      rotate(-2deg);
+  
+    transition:
+      opacity 0.45s ease,
+      transform 0.6s cubic-bezier(.16, 1.5, .3, 1);
+  }
+  
+  
+  .habit-history__toggle:hover {
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #ededed 25%,
+        #ffffff 44%,
+        #dedede 62%,
+        #ffffff 100%
+      );
+  
+    color: #171717;
+  
+    border-color: #d5d5d5;
+  
+    transform:
+      translateY(-4px)
+      translateZ(12px)
+      scale(1.055)
+      rotateX(2deg);
+  
+    padding-left: 14px;
+    padding-right: 14px;
+  
+    box-shadow:
+      0 10px 20px rgba(0,0,0,0.09),
+      0 0 0 2px rgba(23,23,23,0.035),
+      0 0 20px rgba(255,255,255,0.8),
+      inset 0 1px 0 #ffffff;
+  }
+  
+  
+  .habit-history__toggle:hover::before {
     opacity: 1;
-    transform: translateY(0);
+  
+    transform:
+      translateX(55%)
+      rotate(12deg);
   }
-}
-
-@media (max-width: 600px) {
+  
+  
+  .habit-history__toggle:hover::after {
+    opacity: 1;
+  
+    transform:
+      scale(1)
+      rotate(0);
+  }
+  
+  
+  .habit-history__toggle:active {
+    transform:
+      translateY(1px)
+      translateZ(0)
+      scale(0.91);
+  
+    box-shadow:
+      0 2px 5px rgba(0,0,0,0.08);
+  
+    transition:
+      transform 0.08s cubic-bezier(.4,0,.8,.2),
+      box-shadow 0.08s ease;
+  }
+  
+  
+  .habit-history__toggle:focus-visible {
+    outline: none;
+  
+    box-shadow:
+      0 0 0 3px #ffffff,
+      0 0 0 6px rgba(23,23,23,0.18),
+      0 0 20px rgba(23,23,23,0.08);
+  }
+  
+  
+  /* =========================================================
+     🔄 ICÔNE
+     ========================================================= */
+  
+  .habit-history__toggle-icon {
+    position: relative;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 16px;
+    height: 16px;
+  
+    font-size: 13px;
+  
+    transform:
+      rotate(0deg)
+      scale(1);
+  
+    transition:
+      transform 0.7s cubic-bezier(.16, 1.8, .3, 1),
+      color 0.3s ease,
+      text-shadow 0.4s ease;
+  }
+  
+  
+  .habit-history__toggle:hover
+  .habit-history__toggle-icon {
+    transform:
+      rotate(180deg)
+      scale(1.22);
+  
+    text-shadow:
+      0 2px 0 rgba(255,255,255,0.9),
+      0 4px 8px rgba(0,0,0,0.12);
+  }
+  
+  
+  .habit-history__toggle:active
+  .habit-history__toggle-icon {
+    transform:
+      rotate(270deg)
+      scale(0.8);
+  }
+  
+  
+  /* =========================================================
+     📦 CONTENU
+     ========================================================= */
+  
+  .habit-history__content {
+    margin-top: 8px;
+  
+    transform-origin: top center;
+  
+    animation:
+      habit-history-open
+      700ms
+      cubic-bezier(.16, 1.55, .3, 1)
+      both;
+  
+    transition:
+      margin 0.5s cubic-bezier(.16, 1.4, .3, 1),
+      transform 0.6s cubic-bezier(.16, 1.4, .3, 1),
+      opacity 0.4s ease;
+  }
+  
+  
+  @keyframes habit-history-open {
+    0% {
+      opacity: 0;
+  
+      transform:
+        translateY(-22px)
+        scaleY(0.72)
+        scaleX(0.94)
+        rotateX(-5deg);
+    }
+  
+    45% {
+      opacity: 1;
+  
+      transform:
+        translateY(5px)
+        scaleY(1.05)
+        scaleX(1.015)
+        rotateX(2deg);
+    }
+  
+    72% {
+      transform:
+        translateY(-2px)
+        scaleY(0.985)
+        scaleX(0.997);
+    }
+  
+    100% {
+      opacity: 1;
+  
+      transform:
+        translateY(0)
+        scaleY(1)
+        scaleX(1)
+        rotateX(0);
+    }
+  }
+  
+  
+  /* =========================================================
+     💎 CALENDRIER
+     ========================================================= */
+  
   .habit-history-calendar {
-    width: 100%;
-    padding: 13px;
+    position: relative;
+    isolation: isolate;
+  
+    width: min(100%, 380px);
+  
+    padding: 16px;
+  
+    overflow: hidden;
+  
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f8f8f8 22%,
+        #ffffff 40%,
+        #f4f4f4 62%,
+        #ffffff 100%
+      );
+  
+    border:
+      1px solid #e2e2e2;
+  
+    border-radius: 19px;
+  
+    box-shadow:
+      0 5px 15px rgba(0,0,0,0.035),
+      0 15px 35px rgba(0,0,0,0.035),
+      0 0 0 1px rgba(255,255,255,0.75),
+      inset 0 1px 0 rgba(255,255,255,1);
+  
+    transform:
+      translateY(0)
+      translateZ(0)
+      scale(1)
+      rotateX(0);
+  
+    transform-style: preserve-3d;
+  
+    transition:
+      transform 0.7s cubic-bezier(.16, 1.45, .3, 1),
+      border-radius 0.6s cubic-bezier(.16, 1.3, .3, 1),
+      box-shadow 0.7s cubic-bezier(.16, 1.2, .3, 1),
+      background 0.7s ease,
+      border-color 0.5s ease;
   }
-
+  
+  
+  /* =========================================================
+     💎 FACETTES DU CALENDRIER
+     ========================================================= */
+  
+  .habit-history-calendar::before {
+    content: "";
+  
+    position: absolute;
+    inset: -100%;
+  
+    z-index: 10;
+  
+    pointer-events: none;
+  
+    background:
+      linear-gradient(
+        115deg,
+        transparent 35%,
+        rgba(255,255,255,0.08) 40%,
+        rgba(255,255,255,0.95) 48%,
+        rgba(255,255,255,0.12) 55%,
+        transparent 62%
+      );
+  
+    transform:
+      translateX(-50%)
+      rotate(14deg);
+  
+    opacity: 0;
+  
+    transition:
+      transform 1.25s cubic-bezier(.16, 1, .3, 1),
+      opacity 0.4s ease;
+  }
+  
+  
+  .habit-history-calendar::after {
+    content: "";
+  
+    position: absolute;
+    inset: 0;
+  
+    z-index: -1;
+  
+    pointer-events: none;
+  
+    background:
+      linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(255,255,255,0.65) 25%,
+        transparent 25.5%,
+        transparent 68%,
+        rgba(255,255,255,0.5) 68.5%,
+        transparent 100%
+      );
+  
+    opacity: 0;
+  
+    transition:
+      opacity 0.55s ease,
+      transform 0.8s cubic-bezier(.16, 1.3, .3, 1);
+  
+    transform:
+      scale(0.9)
+      rotate(-1deg);
+  }
+  
+  
+  .habit-history-calendar:hover {
+    transform:
+      translateY(-5px)
+      translateZ(12px)
+      scale(1.012)
+      rotateX(1deg);
+  
+    border-radius: 23px;
+  
+    border-color: #d5d5d5;
+  
+    box-shadow:
+      0 18px 36px rgba(0,0,0,0.09),
+      0 0 0 2px rgba(23,23,23,0.025),
+      0 0 25px rgba(255,255,255,0.8),
+      inset 0 1px 0 #ffffff;
+  }
+  
+  
+  .habit-history-calendar:hover::before {
+    opacity: 1;
+  
+    transform:
+      translateX(65%)
+      rotate(14deg);
+  }
+  
+  
+  .habit-history-calendar:hover::after {
+    opacity: 1;
+  
+    transform:
+      scale(1)
+      rotate(0);
+  }
+  
+  
+  /* =========================================================
+     🧭 HEADER
+     ========================================================= */
+  
+  .habit-history-calendar__header {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    align-items: center;
+  
+    margin-bottom: 16px;
+  
+    transition:
+      margin 0.5s cubic-bezier(.16, 1.4, .3, 1),
+      transform 0.5s cubic-bezier(.16, 1.3, .3, 1);
+  }
+  
+  
+  .habit-history-calendar:hover
+  .habit-history-calendar__header {
+    transform:
+      translateY(-2px)
+      translateZ(10px);
+  }
+  
+  
+  /* =========================================================
+     🏷️ TITRE
+     ========================================================= */
+  
+  .habit-history-calendar__title {
+    text-align: center;
+  
+    transform:
+      translateZ(0)
+      scale(1);
+  
+    transition:
+      transform 0.55s cubic-bezier(.16, 1.5, .3, 1);
+  }
+  
+  
+  .habit-history-calendar:hover
+  .habit-history-calendar__title {
+    transform:
+      translateZ(18px)
+      scale(1.04)
+      translateY(-1px);
+  }
+  
+  
+  .habit-history-calendar__title h3 {
+    margin: 0;
+  
+    font-size: 14px;
+    font-weight: 750;
+  
+    color: #171717;
+  
+    transition:
+      color 0.35s ease,
+      letter-spacing 0.45s cubic-bezier(.16, 1.3, .3, 1),
+      text-shadow 0.45s ease;
+  }
+  
+  
+  .habit-history-calendar:hover
+  .habit-history-calendar__title h3 {
+    letter-spacing: 0.02em;
+  
+    text-shadow:
+      0 2px 0 #ffffff,
+      0 4px 8px rgba(0,0,0,0.08);
+  }
+  
+  
+  .habit-history-calendar__title span {
+    display: block;
+  
+    margin-top: 3px;
+  
+    font-size: 10px;
+    color: #a3a3a3;
+  
+    transition:
+      color 0.4s ease,
+      transform 0.5s cubic-bezier(.16, 1.4, .3, 1);
+  }
+  
+  
+  .habit-history-calendar:hover
+  .habit-history-calendar__title span {
+    color: #737373;
+  
+    transform:
+      translateY(1px);
+  }
+  
+  
+  /* =========================================================
+     ◀️ ▶️ NAVIGATION DIAMANT
+     ========================================================= */
+  
+  .habit-history-calendar__nav {
+    position: relative;
+    isolation: isolate;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 32px;
+    height: 32px;
+  
+    padding: 0;
+  
+    overflow: hidden;
+  
+    border: 1px solid transparent;
+    border-radius: 10px;
+  
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,0.95),
+        rgba(235,235,235,0.7)
+      );
+  
+    color: #737373;
+  
+    font-size: 21px;
+    line-height: 1;
+  
+    cursor: pointer;
+  
+    transform:
+      scale(1)
+      rotate(0deg);
+  
+    transition:
+      transform 0.55s cubic-bezier(.16, 1.7, .3, 1),
+      background 0.45s ease,
+      color 0.3s ease,
+      border-color 0.4s ease,
+      box-shadow 0.55s cubic-bezier(.16, 1.3, .3, 1);
+  }
+  
+  
+  .habit-history-calendar__nav::before {
+    content: "";
+  
+    position: absolute;
+    inset: -100%;
+  
+    z-index: -1;
+  
+    background:
+      linear-gradient(
+        120deg,
+        transparent 40%,
+        rgba(255,255,255,1) 50%,
+        transparent 60%
+      );
+  
+    transform:
+      translateX(-45%)
+      rotate(12deg);
+  
+    opacity: 0;
+  
+    transition:
+      transform 0.8s cubic-bezier(.16, 1, .3, 1),
+      opacity 0.3s ease;
+  }
+  
+  
+  .habit-history-calendar__nav:hover {
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff,
+        #dedede
+      );
+  
+    color: #171717;
+  
+    border-color: #d2d2d2;
+  
+    transform:
+      scale(1.16)
+      rotate(0deg);
+  
+    box-shadow:
+      0 7px 14px rgba(0,0,0,0.1),
+      0 0 0 2px rgba(23,23,23,0.035),
+      inset 0 1px 0 white;
+  }
+  
+  
+  .habit-history-calendar__nav:hover::before {
+    opacity: 1;
+  
+    transform:
+      translateX(55%)
+      rotate(12deg);
+  }
+  
+  
+  .habit-history-calendar__nav:first-child:hover {
+    transform:
+      scale(1.16)
+      rotate(-10deg)
+      translateX(-2px);
+  }
+  
+  
+  .habit-history-calendar__nav:last-child:hover {
+    transform:
+      scale(1.16)
+      rotate(10deg)
+      translateX(2px);
+  }
+  
+  
+  .habit-history-calendar__nav:active {
+    transform:
+      scale(0.8)
+      rotate(0deg);
+  
+    transition:
+      transform 0.08s cubic-bezier(.4,0,.8,.2);
+  }
+  
+  
+  /* =========================================================
+     📅 GRILLES
+     ========================================================= */
+  
   .habit-history-calendar__weekdays,
   .habit-history-calendar__days {
-    gap: 4px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  
+    transition:
+      gap 0.55s cubic-bezier(.16, 1.4, .3, 1);
   }
-}
+  
+  
+  .habit-history-calendar__weekdays {
+    margin-bottom: 5px;
+  }
+  
+  
+  .habit-history-calendar:hover
+  .habit-history-calendar__weekdays,
+  .habit-history-calendar:hover
+  .habit-history-calendar__days {
+    gap: 6px;
+  }
+  
+  
+  /* =========================================================
+     🔤 JOURS DE LA SEMAINE
+     ========================================================= */
+  
+  .habit-history-calendar__weekdays span {
+    text-align: center;
+  
+    font-size: 10px;
+    font-weight: 750;
+  
+    color: #a3a3a3;
+  
+    transform:
+      translateY(0)
+      scale(1);
+  
+    transition:
+      color 0.35s ease,
+      transform 0.45s cubic-bezier(.16, 1.5, .3, 1),
+      letter-spacing 0.4s ease;
+  }
+  
+  
+  .habit-history-calendar__weekdays span:hover {
+    color: #525252;
+  
+    transform:
+      translateY(-3px)
+      scale(1.1);
+  
+    letter-spacing: 0.025em;
+  }
+  
+  
+  /* =========================================================
+     💎 JOUR — DIAMANT
+     ========================================================= */
+  
+  .habit-history-calendar__day {
+    position: relative;
+    isolation: isolate;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 100%;
+    aspect-ratio: 1;
+  
+    padding: 0;
+  
+    overflow: hidden;
+  
+    border: 1px solid transparent;
+    border-radius: 9px;
+  
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #f8f8f8 38%,
+        #ffffff 55%,
+        #ededed 100%
+      );
+  
+    color: #525252;
+  
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 550;
+  
+    cursor: pointer;
+  
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.025),
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 -1px 0 rgba(0,0,0,0.025);
+  
+    transform:
+      translateY(0)
+      translateZ(0)
+      scale(1)
+      rotate(0deg);
+  
+    transition:
+      transform 0.52s cubic-bezier(.16, 1.75, .3, 1),
+      background 0.5s cubic-bezier(.2, 1, .3, 1),
+      color 0.3s ease,
+      border-color 0.4s ease,
+      box-shadow 0.55s cubic-bezier(.16, 1.4, .3, 1),
+      border-radius 0.5s cubic-bezier(.16, 1.5, .3, 1);
+  }
+  
+  
+  /* Facette brillante */
+  
+  .habit-history-calendar__day::before {
+    content: "";
+  
+    position: absolute;
+    inset: -100%;
+  
+    z-index: 3;
+  
+    pointer-events: none;
+  
+    background:
+      linear-gradient(
+        120deg,
+        transparent 38%,
+        rgba(255,255,255,0.25) 44%,
+        rgba(255,255,255,1) 50%,
+        rgba(255,255,255,0.18) 56%,
+        transparent 63%
+      );
+  
+    transform:
+      translateX(-45%)
+      rotate(15deg);
+  
+    opacity: 0;
+  
+    transition:
+      transform 0.8s cubic-bezier(.16, 1, .3, 1),
+      opacity 0.35s ease;
+  }
+  
+  
+  /* Facette interne */
+  
+  .habit-history-calendar__day::after {
+    content: "";
+  
+    position: absolute;
+    inset: 2px;
+  
+    z-index: 2;
+  
+    pointer-events: none;
+  
+    border-radius: 7px;
+  
+    border:
+      1px solid rgba(255,255,255,0.85);
+  
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.65),
+        transparent 42%,
+        rgba(255,255,255,0.3)
+      );
+  
+    opacity: 0;
+  
+    transform:
+      scale(0.75)
+      rotate(-4deg);
+  
+    transition:
+      opacity 0.35s ease,
+      transform 0.55s cubic-bezier(.16, 1.6, .3, 1);
+  }
+  
+  
+  .habit-history-calendar__day:hover:not(:disabled) {
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #dedede 32%,
+        #ffffff 52%,
+        #d5d5d5 100%
+      );
+  
+    color: #171717;
+  
+    transform:
+      translateY(-5px)
+      translateZ(12px)
+      scale(1.14)
+      rotate(-2deg);
+  
+    border-color: #cccccc;
+  
+    border-radius: 12px;
+  
+    box-shadow:
+      0 9px 18px rgba(0,0,0,0.11),
+      0 0 0 2px rgba(23,23,23,0.035),
+      inset 0 1px 0 white,
+      inset 0 -2px 0 rgba(0,0,0,0.04);
+  }
+  
+  
+  .habit-history-calendar__day:hover:not(:disabled)::before {
+    opacity: 1;
+  
+    transform:
+      translateX(55%)
+      rotate(15deg);
+  }
+  
+  
+  .habit-history-calendar__day:hover:not(:disabled)::after {
+    opacity: 1;
+  
+    transform:
+      scale(1)
+      rotate(0);
+  }
+  
+  
+  .habit-history-calendar__day:active:not(:disabled) {
+    transform:
+      translateY(1px)
+      translateZ(0)
+      scale(0.84)
+      rotate(0deg);
+  
+    border-radius: 7px;
+  
+    box-shadow:
+      0 2px 4px rgba(0,0,0,0.08);
+  
+    transition:
+      transform 0.08s cubic-bezier(.4,0,.8,.2),
+      box-shadow 0.08s ease;
+  }
+  
+  
+  /* =========================================================
+     🖤 JOUR COMPLÉTÉ — DIAMANT NOIR
+     ========================================================= */
+  
+  .habit-history-calendar__day--completed {
+    background:
+      linear-gradient(
+        135deg,
+        #444444 0%,
+        #171717 25%,
+        #080808 48%,
+        #292929 72%,
+        #101010 100%
+      );
+  
+    color: #ffffff;
+  
+    font-weight: 750;
+  
+    border-color: #2f2f2f;
+  
+    box-shadow:
+      0 3px 7px rgba(0,0,0,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.16),
+      inset 0 -2px 0 rgba(0,0,0,0.2);
+  
+    transition:
+      transform 0.55s cubic-bezier(.16, 1.7, .3, 1),
+      background 0.5s cubic-bezier(.2, 1, .3, 1),
+      box-shadow 0.6s cubic-bezier(.16, 1.4, .3, 1),
+      border-color 0.4s ease;
+  }
+  
+  
+  .habit-history-calendar__day--completed::before {
+    opacity: 0.12;
+  }
+  
+  
+  .habit-history-calendar__day--completed::after {
+    opacity: 0.08;
+  
+    border-color: rgba(255,255,255,0.3);
+  }
+  
+  
+  .habit-history-calendar__day--completed:hover {
+    background:
+      linear-gradient(
+        135deg,
+        #666666 0%,
+        #292929 25%,
+        #0b0b0b 48%,
+        #454545 72%,
+        #171717 100%
+      );
+  
+    color: #ffffff;
+  
+    transform:
+      translateY(-6px)
+      translateZ(15px)
+      scale(1.16)
+      rotate(2deg);
+  
+    box-shadow:
+      0 10px 20px rgba(0,0,0,0.25),
+      0 0 0 2px rgba(255,255,255,0.06),
+      0 0 20px rgba(255,255,255,0.06),
+      inset 0 1px 0 rgba(255,255,255,0.22);
+  }
+  
+  
+  .habit-history-calendar__day--completed:hover::before {
+    opacity: 1;
+  
+    transform:
+      translateX(55%)
+      rotate(15deg);
+  }
+  
+  
+  .habit-history-calendar__day--completed:hover::after {
+    opacity: 0.2;
+  
+    transform:
+      scale(1)
+      rotate(0);
+  }
+  
+  
+  /* =========================================================
+     ✨ AUJOURD'HUI
+     ========================================================= */
+  
+  .habit-history-calendar__day--today {
+    border-color: #171717;
+  
+    font-weight: 750;
+  
+    box-shadow:
+      0 0 0 2px rgba(23,23,23,0.07),
+      inset 0 1px 0 white;
+  
+    transition:
+      border-color 0.4s ease,
+      box-shadow 0.55s cubic-bezier(.16, 1.4, .3, 1),
+      transform 0.5s cubic-bezier(.16, 1.6, .3, 1);
+  }
+  
+  
+  .habit-history-calendar__day--today:hover {
+    border-color: #000000;
+  
+    transform:
+      translateY(-6px)
+      translateZ(15px)
+      scale(1.16)
+      rotate(-2deg);
+  
+    box-shadow:
+      0 0 0 4px rgba(23,23,23,0.08),
+      0 9px 19px rgba(0,0,0,0.13),
+      inset 0 1px 0 white;
+  }
+  
+  
+  .habit-history-calendar__day--completed.habit-history-calendar__day--today {
+    border-color: #8a8a8a;
+  
+    box-shadow:
+      0 0 0 2px rgba(255,255,255,0.12),
+      0 3px 8px rgba(0,0,0,0.16),
+      inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+  
+  
+  /* =========================================================
+     🔮 FUTUR
+     ========================================================= */
+  
+  .habit-history-calendar__day--future {
+    background:
+      linear-gradient(
+        145deg,
+        #fafafa,
+        #f1f1f1
+      );
+  
+    color: #d4d4d4;
+  
+    cursor: default;
+  
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.8);
+  
+    transition:
+      background 0.5s ease,
+      color 0.4s ease,
+      transform 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+  
+  
+  /* =========================================================
+     🚫 DISABLED
+     ========================================================= */
+  
+  .habit-history-calendar__day:disabled {
+    opacity: 0.7;
+  
+    transform:
+      scale(0.98);
+  
+    transition:
+      opacity 0.35s ease,
+      transform 0.4s cubic-bezier(.16, 1.3, .3, 1);
+  }
+  
+  
+  /* =========================================================
+     📊 LÉGENDE
+     ========================================================= */
+  
+  .habit-history-calendar__legend {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  
+    margin-top: 14px;
+    padding-top: 12px;
+  
+    border-top: 1px solid #e5e5e5;
+  
+    font-size: 10px;
+    color: #a3a3a3;
+  
+    transition:
+      margin-top 0.5s cubic-bezier(.16, 1.3, .3, 1),
+      padding-top 0.5s cubic-bezier(.16, 1.3, .3, 1),
+      border-color 0.4s ease,
+      color 0.35s ease,
+      transform 0.5s cubic-bezier(.16, 1.4, .3, 1);
+  }
+  
+  
+  .habit-history-calendar:hover
+  .habit-history-calendar__legend {
+    border-color: #d5d5d5;
+  
+    color: #737373;
+  
+    transform:
+      translateY(2px);
+  }
+  
+  
+  .habit-history-calendar__legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  
+    transform:
+      translateY(0)
+      scale(1);
+  
+    transition:
+      transform 0.5s cubic-bezier(.16, 1.6, .3, 1),
+      color 0.35s ease;
+  }
+  
+  
+  .habit-history-calendar__legend span:hover {
+    transform:
+      translateY(-2px)
+      scale(1.06);
+  
+    color: #525252;
+  }
+  
+  
+  /* =========================================================
+     💎 POINTS DIAMANT
+     ========================================================= */
+  
+  .habit-history-calendar__legend-dot {
+    display: inline-block;
+  
+    width: 8px;
+    height: 8px;
+  
+    border-radius: 3px;
+  
+    transform:
+      scale(1)
+      rotate(0deg);
+  
+    box-shadow:
+      0 1px 3px rgba(0,0,0,0.1),
+      inset 0 1px 0 rgba(255,255,255,0.65);
+  
+    transition:
+      transform 0.55s cubic-bezier(.16, 1.8, .3, 1),
+      border-radius 0.45s ease,
+      box-shadow 0.5s ease,
+      background 0.4s ease;
+  }
+  
+  
+  .habit-history-calendar__legend span:hover
+  .habit-history-calendar__legend-dot {
+    transform:
+      scale(1.35)
+      rotate(45deg);
+  
+    border-radius: 2px;
+  
+    box-shadow:
+      0 3px 7px rgba(0,0,0,0.14),
+      inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+  
+  
+  .habit-history-calendar__legend-dot--completed {
+    background:
+      linear-gradient(
+        135deg,
+        #555555,
+        #111111
+      );
+  }
+  
+  
+  .habit-history-calendar__legend-dot--today {
+    border: 1px solid #171717;
+  
+    background:
+      linear-gradient(
+        135deg,
+        #ffffff,
+        #eeeeee
+      );
+  }
+  
+  
+  /* =========================================================
+     💫 ENTRÉE ÉLASTIQUE DES JOURS
+     ========================================================= */
+  
+  .habit-history-calendar__day {
+    animation:
+      habit-day-enter
+      550ms
+      cubic-bezier(.16, 1.55, .3, 1)
+      both;
+  }
+  
+  
+  .habit-history-calendar__day:nth-child(1)  { animation-delay: 20ms; }
+  .habit-history-calendar__day:nth-child(2)  { animation-delay: 35ms; }
+  .habit-history-calendar__day:nth-child(3)  { animation-delay: 50ms; }
+  .habit-history-calendar__day:nth-child(4)  { animation-delay: 65ms; }
+  .habit-history-calendar__day:nth-child(5)  { animation-delay: 80ms; }
+  .habit-history-calendar__day:nth-child(6)  { animation-delay: 95ms; }
+  .habit-history-calendar__day:nth-child(7)  { animation-delay: 110ms; }
+  .habit-history-calendar__day:nth-child(8)  { animation-delay: 125ms; }
+  .habit-history-calendar__day:nth-child(9)  { animation-delay: 140ms; }
+  .habit-history-calendar__day:nth-child(10) { animation-delay: 155ms; }
+  .habit-history-calendar__day:nth-child(11) { animation-delay: 170ms; }
+  .habit-history-calendar__day:nth-child(12) { animation-delay: 185ms; }
+  .habit-history-calendar__day:nth-child(13) { animation-delay: 200ms; }
+  .habit-history-calendar__day:nth-child(14) { animation-delay: 215ms; }
+  
+  
+  @keyframes habit-day-enter {
+    0% {
+      opacity: 0;
+  
+      transform:
+        translateY(12px)
+        scale(0.72)
+        rotate(-8deg);
+    }
+  
+    60% {
+      opacity: 1;
+  
+      transform:
+        translateY(-3px)
+        scale(1.08)
+        rotate(2deg);
+    }
+  
+    82% {
+      transform:
+        translateY(1px)
+        scale(0.98)
+        rotate(-0.5deg);
+    }
+  
+    100% {
+      opacity: 1;
+  
+      transform:
+        translateY(0)
+        scale(1)
+        rotate(0);
+    }
+  }
+  
+  
+  /* =========================================================
+     📱 MOBILE
+     ========================================================= */
+  
+  @media (max-width: 600px) {
+    .habit-history-calendar {
+      width: 100%;
+      padding: 13px;
+  
+      border-radius: 17px;
+    }
+  
+    .habit-history-calendar__weekdays,
+    .habit-history-calendar__days {
+      gap: 4px;
+    }
+  
+    .habit-history-calendar__day {
+      border-radius: 8px;
+    }
+  
+    .habit-history-calendar__day:hover:not(:disabled) {
+      transform:
+        translateY(-3px)
+        scale(1.08)
+        rotate(-1deg);
+    }
+  
+    .habit-history-calendar__day--completed:hover {
+      transform:
+        translateY(-4px)
+        scale(1.1)
+        rotate(1deg);
+    }
+  }
+  
+  
+  /* =========================================================
+     🧘 ACCESSIBILITÉ
+     ========================================================= */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .habit-history *,
+    .habit-history *::before,
+    .habit-history *::after {
+      animation: none !important;
+  
+      transition:
+        color 0.15s ease,
+        background-color 0.15s ease,
+        border-color 0.15s ease !important;
+    }
+  
+    .habit-history-calendar__day:hover:not(:disabled),
+    .habit-history-calendar__nav:hover,
+    .habit-history__toggle:hover,
+    .habit-history-calendar:hover {
+      transform: none !important;
+    }
+  }
+  
