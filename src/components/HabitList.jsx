@@ -10,6 +10,14 @@ function HabitList({
   onDelete,
   isHabitCompletedToday,
 }) {
+  console.log(
+    "HABITS :",
+    habits.map((habit) => ({
+      id: habit.id,
+      title: habit.title,
+      habit,
+    }))
+  );
   return (
     <div className="habit-list">
       {habits.map(function (habit) {

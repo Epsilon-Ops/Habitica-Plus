@@ -1,0 +1,464 @@
+/* ========================================
+   Sélecteur de couleurs — Fun & performant
+   ======================================== */
+
+   .habit-color-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+  }
+  
+  
+  /* ========================================
+     Carte
+     ======================================== */
+  
+  .habit-color-picker__option {
+    position: relative;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    min-height: 100px;
+    padding: 14px 10px;
+  
+    overflow: hidden;
+  
+    border: 1px solid color-mix(
+      in srgb,
+      var(--color-base) 12%,
+      transparent
+    );
+  
+    border-radius: 16px;
+  
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--color-base) 16%, white),
+        color-mix(in srgb, var(--color-base) 8%, white)
+      );
+  
+    color: #333;
+    cursor: pointer;
+  
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  
+    transform: translate3d(0, 0, 0);
+  
+    transition:
+      transform 160ms cubic-bezier(.2, .8, .2, 1),
+      border-color 160ms ease,
+      background 160ms ease,
+      box-shadow 160ms ease;
+  }
+  
+  
+  /* Reflet */
+  
+  .habit-color-picker__option::before {
+    content: "";
+  
+    position: absolute;
+    inset: 0;
+  
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.28),
+      transparent 45%
+    );
+  
+    pointer-events: none;
+  }
+  
+  
+  /* ========================================
+     Hover : petit "pop"
+     ======================================== */
+  
+  .habit-color-picker__option:hover {
+    transform: translate3d(0, -4px, 0) scale(1.015);
+  
+    border-color: color-mix(
+      in srgb,
+      var(--color-base) 35%,
+      transparent
+    );
+  
+    box-shadow:
+      0 8px 18px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  }
+  
+  
+  /* ========================================
+     Clic : squash & stretch
+     ======================================== */
+  
+  .habit-color-picker__option:active {
+    transform:
+      translate3d(0, 1px, 0)
+      scaleX(0.96)
+      scaleY(0.92);
+  
+    transition-duration: 70ms;
+  }
+  
+  
+  /* ========================================
+     Focus
+     ======================================== */
+  
+  .habit-color-picker__option:focus-visible {
+    outline: 3px solid color-mix(
+      in srgb,
+      var(--color-base) 35%,
+      transparent
+    );
+  
+    outline-offset: 3px;
+  }
+  
+  
+  /* ========================================
+     Aperçu couleur
+     ======================================== */
+  
+  .habit-color-picker__preview {
+    position: relative;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 48px;
+    height: 48px;
+  
+    margin-bottom: 8px;
+  
+    border-radius: 50%;
+  
+    background: var(--color-base);
+  
+    color: white;
+  
+    box-shadow:
+      inset 0 0 0 3px rgba(255, 255, 255, 0.32),
+      inset 0 -4px 8px rgba(0, 0, 0, 0.08),
+      0 4px 10px rgba(0, 0, 0, 0.14);
+  
+    transform: translate3d(0, 0, 0) scale(1);
+  
+    transition:
+      transform 180ms cubic-bezier(.2, 1.4, .4, 1),
+      box-shadow 180ms ease;
+  }
+  
+  
+  /* Petit reflet */
+  
+  .habit-color-picker__preview::before {
+    content: "";
+  
+    position: absolute;
+    top: 5px;
+    left: 8px;
+  
+    width: 35%;
+    height: 20%;
+  
+    border-radius: 50%;
+  
+    background: rgba(255, 255, 255, 0.28);
+  
+    transform: rotate(-25deg);
+  
+    pointer-events: none;
+  }
+  
+  
+  /* ========================================
+     Hover : le rond rebondit
+     ======================================== */
+  
+  .habit-color-picker__option:hover
+  .habit-color-picker__preview {
+    transform:
+      translate3d(0, -2px, 0)
+      scaleX(1.08)
+      scaleY(1.04);
+  
+    box-shadow:
+      inset 0 0 0 3px rgba(255, 255, 255, 0.4),
+      0 7px 14px rgba(0, 0, 0, 0.16);
+  }
+  
+  
+  /* ========================================
+     Clic : vrai petit squash
+     ======================================== */
+  
+  .habit-color-picker__option:active
+  .habit-color-picker__preview {
+    transform:
+      translate3d(0, 2px, 0)
+      scaleX(1.12)
+      scaleY(0.84);
+  }
+  
+  
+  /* ========================================
+     Nom
+     ======================================== */
+  
+  .habit-color-picker__name {
+    position: relative;
+  
+    font-size: 0.85rem;
+    font-weight: 650;
+    line-height: 1.2;
+  
+    text-align: center;
+  
+    color: #3c3c3c;
+  
+    transform: translate3d(0, 0, 0);
+  
+    transition:
+      transform 160ms cubic-bezier(.2, .8, .2, 1),
+      color 160ms ease;
+  }
+  
+  .habit-color-picker__option:hover
+  .habit-color-picker__name {
+    color: #222;
+  
+    transform: translate3d(0, 1px, 0);
+  }
+  
+  
+  /* ========================================
+     Sélection
+     ======================================== */
+  
+  .habit-color-picker__option--selected {
+    border-color: var(--color-base);
+  
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--color-base) 22%, white),
+        color-mix(in srgb, var(--color-base) 12%, white)
+      );
+  
+    box-shadow:
+      0 0 0 2px color-mix(
+        in srgb,
+        var(--color-base) 16%,
+        transparent
+      ),
+      0 6px 16px color-mix(
+        in srgb,
+        var(--color-base) 15%,
+        transparent
+      ),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  
+    animation: habit-card-pop 260ms cubic-bezier(.2, 1.35, .4, 1);
+  }
+  
+  
+  /* Pop de sélection */
+  
+  @keyframes habit-card-pop {
+    0% {
+      transform: scale(0.96);
+    }
+  
+    55% {
+      transform:
+        scaleX(1.025)
+        scaleY(0.975);
+    }
+  
+    80% {
+      transform:
+        scaleX(0.99)
+        scaleY(1.01);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  
+  /* ========================================
+     Rond sélectionné
+     ======================================== */
+  
+  .habit-color-picker__option--selected
+  .habit-color-picker__preview {
+    background: var(--color-accent);
+  
+    animation: habit-preview-pop 300ms cubic-bezier(.2, 1.5, .4, 1);
+  }
+  
+  
+  @keyframes habit-preview-pop {
+    0% {
+      transform:
+        scaleX(0.72)
+        scaleY(0.72);
+    }
+  
+    55% {
+      transform:
+        scaleX(1.14)
+        scaleY(0.94);
+    }
+  
+    75% {
+      transform:
+        scaleX(0.96)
+        scaleY(1.05);
+    }
+  
+    100% {
+      transform:
+        scaleX(1.08)
+        scaleY(1.08);
+    }
+  }
+  
+  
+  /* ========================================
+     Petite coche
+     ======================================== */
+  
+  .habit-color-picker__check {
+    position: absolute;
+  
+    top: 7px;
+    right: 7px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 22px;
+    height: 22px;
+  
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+  
+    background: var(--color-base);
+    color: white;
+  
+    font-size: 0.72rem;
+    font-weight: 800;
+  
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.16);
+  
+    transform-origin: center;
+    animation: habit-check-pop 260ms cubic-bezier(.2, 1.5, .4, 1);
+  }
+  
+  
+  @keyframes habit-check-pop {
+    0% {
+      opacity: 0;
+      transform: scale(0.3) rotate(-20deg);
+    }
+  
+    55% {
+      opacity: 1;
+      transform:
+        scale(1.18)
+        rotate(7deg);
+    }
+  
+    75% {
+      transform:
+        scale(0.94)
+        rotate(-3deg);
+    }
+  
+    100% {
+      transform:
+        scale(1)
+        rotate(0);
+    }
+  }
+  
+  
+  /* ========================================
+     Petit "bounce" uniquement au survol
+     ======================================== */
+  
+  @media (hover: hover) {
+    .habit-color-picker__option:hover
+    .habit-color-picker__preview {
+      animation: habit-hover-bounce 700ms ease-in-out;
+    }
+  }
+  
+  
+  @keyframes habit-hover-bounce {
+    0%,
+    100% {
+      transform: translate3d(0, -2px, 0) scaleX(1.08) scaleY(1.04);
+    }
+  
+    35% {
+      transform: translate3d(0, -4px, 0) scaleX(1.11) scaleY(0.98);
+    }
+  
+    65% {
+      transform: translate3d(0, -2px, 0) scaleX(1.06) scaleY(1.06);
+    }
+  }
+  
+  
+  /* ========================================
+     Réduction des animations
+     ======================================== */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .habit-color-picker__option,
+    .habit-color-picker__preview,
+    .habit-color-picker__name,
+    .habit-color-picker__check {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+  
+  
+  /* =======================================
+     Mobile
+     ======================================== */
+  
+  @media (max-width: 600px) {
+    .habit-color-picker {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  
+    .habit-color-picker__option {
+      min-height: 90px;
+      border-radius: 14px;
+    }
+  
+    .habit-color-picker__preview {
+      width: 42px;
+      height: 42px;
+    }
+  }
+  

@@ -12,6 +12,10 @@ function getToday() {
   return `${year}-${month}-${day}`;
 }
 
+function createHabitId() {
+  return crypto.randomUUID();
+}
+
 function useHabits() {
   const [habits, setHabits] = useState(function () {
     try {
@@ -30,6 +34,12 @@ function useHabits() {
       return parsedHabits.map(function (habit) {
         return {
           ...habit,
+
+          // Donne un ID aux anciennes habitudes qui n'en ont pas
+          id: habit.id || createHabitId(),
+
+          color: habit.color || "coral",
+
           completedDates: Array.isArray(habit.completedDates)
             ? habit.completedDates
             : [],
@@ -64,12 +74,20 @@ function useHabits() {
 
   function addHabit(habit) {
     setHabits(function (currentHabits) {
+      const newHabit = {
+        ...habit,
+
+        // ID unique pour la nouvelle habitude
+        id: createHabitId(),
+
+        color: habit.color || "coral",
+
+        completedDates: [],
+      };
+
       return [
         ...currentHabits,
-        {
-          ...habit,
-          completedDates: [],
-        },
+        newHabit,
       ];
     });
   }
@@ -92,49 +110,51 @@ function useHabits() {
         return {
           ...habit,
           ...updates,
+
+          // On s'assure que l'ID ne peut pas être écrasé
+          id: habit.id,
         };
       });
     });
   }
 
-function toggleHabit(habitId, date = getToday()) {
-  setHabits(function (currentHabits) {
-    return currentHabits.map(function (habit) {
-      if (habit.id !== habitId) {
-        return habit;
-      }
+  function toggleHabit(habitId, date = getToday()) {
+    setHabits(function (currentHabits) {
+      return currentHabits.map(function (habit) {
+        if (habit.id !== habitId) {
+          return habit;
+        }
 
-      const completedDates = Array.isArray(
-        habit.completedDates
-      )
-        ? habit.completedDates
-        : [];
+        const completedDates = Array.isArray(
+          habit.completedDates
+        )
+          ? habit.completedDates
+          : [];
 
-      const isCompleted = completedDates.includes(date);
+        const isCompleted = completedDates.includes(date);
 
-      let newCompletedDates;
+        let newCompletedDates;
 
-      if (isCompleted) {
-        newCompletedDates = completedDates.filter(
-          function (completedDate) {
-            return completedDate !== date;
-          }
-        );
-      } else {
-        newCompletedDates = [
-          ...completedDates,
-          date,
-        ];
-      }
+        if (isCompleted) {
+          newCompletedDates = completedDates.filter(
+            function (completedDate) {
+              return completedDate !== date;
+            }
+          );
+        } else {
+          newCompletedDates = [
+            ...completedDates,
+            date,
+          ];
+        }
 
-      return {
-        ...habit,
-        completedDates: newCompletedDates,
-      };
+        return {
+          ...habit,
+          completedDates: newCompletedDates,
+        };
+      });
     });
-  });
-}
-
+  }
 
   function isHabitCompletedToday(habit) {
     const completedDates = Array.isArray(

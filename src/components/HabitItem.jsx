@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import habitColors from "../colors/habitColors";
 
 import { habitIcons } from "../icons/habitIcons";
 import HabitHistory from "./HabitHistory";
@@ -13,15 +14,24 @@ function HabitItem({
 }) {
   const Icon =
     habitIcons[habit.icon] || habitIcons.check;
+  const colors =
+    habitColors[habit.color] || habitColors.coral;
+
 
   return (
-    <article
-      className={
-        isCompletedToday
-          ? "habit-item habit-item--completed"
-          : "habit-item"
-      }
-    >
+      <article
+        className={
+          isCompletedToday
+            ? "habit-item habit-item--completed"
+            : "habit-item"
+        }
+        style={{
+          "--habit-base": colors.base,
+          "--habit-accent": colors.accent,
+          "--habit-completed": colors.completed,
+          "--habit-completed-accent": colors.completedAccent,
+        }}
+      >
       <div className="habit-item__icon">
         <Icon
           size={24}
