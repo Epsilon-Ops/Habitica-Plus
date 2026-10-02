@@ -1,0 +1,82 @@
+.icon-picker {
+display: grid;
+grid-template-columns: repeat(5, minmax(0, 1fr));
+gap: 8px;
+}
+
+.icon-picker__item {
+display: flex;
+align-items: center;
+justify-content: center;
+
+aspect-ratio: 1;
+
+padding: 0;
+
+border: 1px solid #e5e5e5;
+border-radius: 12px;
+
+background: #ffffff;
+color: #525252;
+
+cursor: pointer;
+
+transition:
+background-color 150ms ease,
+border-color 150ms ease,
+color 150ms ease,
+transform 150ms ease,
+box-shadow 150ms ease;
+}
+
+.icon-picker__item:hover {
+border-color: #a3a3a3;
+background: #fafafa;
+color: #171717;
+
+transform: translateY(-1px);
+}
+
+.icon-picker__item:active {
+transform: scale(0.95);
+}
+
+.icon-picker__item--selected {
+border-color: #171717;
+background: #171717;
+color: #ffffff;
+
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.icon-picker__item--selected:hover {
+border-color: #171717;
+background: #262626;
+color: #ffffff;
+}
+
+.icon-picker__item:focus-visible {
+outline: 3px solid rgba(23, 23, 23, 0.18);
+outline-offset: 2px;
+}
+
+.icon-picker__item svg {
+width: 24px;
+height: 24px;
+}
+
+@media (max-width: 420px) {
+.icon-picker {
+grid-template-columns: repeat(5, minmax(0, 1fr));
+gap: 6px;
+}
+
+.icon-picker__item {
+border-radius: 10px;
+}
+
+.icon-picker__item svg {
+width: 21px;
+height: 21px;
+}
+}

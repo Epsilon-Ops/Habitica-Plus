@@ -1,0 +1,271 @@
+.habit-history {
+  margin-top: 12px;
+}
+
+.habit-history__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 6px 9px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #737373;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.habit-history__toggle:hover {
+  background: #f5f5f5;
+  color: #171717;
+}
+
+.habit-history__toggle:focus-visible {
+  outline: 3px solid rgba(23, 23, 23, 0.15);
+  outline-offset: 2px;
+}
+
+.habit-history__toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  font-size: 13px;
+}
+
+.habit-history__content {
+  margin-top: 8px;
+
+  animation: habit-history-open 180ms ease-out;
+}
+
+.habit-history-calendar {
+  width: min(100%, 380px);
+
+  padding: 16px;
+
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+}
+
+.habit-history-calendar__header {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+
+  margin-bottom: 16px;
+}
+
+.habit-history-calendar__title {
+  text-align: center;
+}
+
+.habit-history-calendar__title h3 {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: #171717;
+}
+
+.habit-history-calendar__title span {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 10px;
+  color: #a3a3a3;
+}
+
+.habit-history-calendar__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #737373;
+
+  font-size: 21px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.habit-history-calendar__nav:hover {
+  background: #e5e5e5;
+  color: #171717;
+}
+
+.habit-history-calendar__weekdays,
+.habit-history-calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.habit-history-calendar__weekdays {
+  margin-bottom: 5px;
+}
+
+.habit-history-calendar__weekdays span {
+  text-align: center;
+
+  font-size: 10px;
+  font-weight: 700;
+  color: #a3a3a3;
+}
+
+.habit-history-calendar__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  aspect-ratio: 1;
+
+  padding: 0;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #525252;
+
+  font-family: inherit;
+  font-size: 11px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease;
+}
+
+.habit-history-calendar__day:hover:not(:disabled) {
+  background: #e5e5e5;
+  transform: scale(1.04);
+}
+
+.habit-history-calendar__day--empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.habit-history-calendar__day--completed {
+  background: #171717;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.habit-history-calendar__day--completed:hover {
+  background: #404040;
+}
+
+.habit-history-calendar__day--today {
+  border-color: #171717;
+  font-weight: 700;
+}
+
+.habit-history-calendar__day--completed.habit-history-calendar__day--today {
+  border-color: #737373;
+}
+
+.habit-history-calendar__day--future {
+  background: #f5f5f5;
+  color: #d4d4d4;
+  cursor: default;
+}
+
+.habit-history-calendar__day:disabled {
+  opacity: 0.7;
+}
+
+.habit-history-calendar__legend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-top: 14px;
+  padding-top: 12px;
+
+  border-top: 1px solid #e5e5e5;
+
+  font-size: 10px;
+  color: #a3a3a3;
+}
+
+.habit-history-calendar__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.habit-history-calendar__legend-dot {
+  display: inline-block;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 3px;
+}
+
+.habit-history-calendar__legend-dot--completed {
+  background: #171717;
+}
+
+.habit-history-calendar__legend-dot--today {
+  border: 1px solid #171717;
+  background: #ffffff;
+}
+
+@keyframes habit-history-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .habit-history-calendar {
+    width: 100%;
+    padding: 13px;
+  }
+
+  .habit-history-calendar__weekdays,
+  .habit-history-calendar__days {
+    gap: 4px;
+  }
+}
