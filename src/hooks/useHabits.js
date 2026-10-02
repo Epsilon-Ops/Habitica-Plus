@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { HABIT_TYPES } from "../constants/habitTypes";
 
 const STORAGE_KEY = "habit-tracker-habits";
 
@@ -34,17 +35,19 @@ function useHabits() {
       return parsedHabits.map(function (habit) {
         return {
           ...habit,
-
-          // Donne un ID aux anciennes habitudes qui n'en ont pas
+      
           id: habit.id || createHabitId(),
-
+      
+          type: habit.type || HABIT_TYPES.TODO,
+      
           color: habit.color || "coral",
-
+      
           completedDates: Array.isArray(habit.completedDates)
             ? habit.completedDates
             : [],
         };
       });
+      
     } catch (error) {
       console.error(
         "Impossible de charger les habitudes :",
@@ -76,21 +79,23 @@ function useHabits() {
     setHabits(function (currentHabits) {
       const newHabit = {
         ...habit,
-
-        // ID unique pour la nouvelle habitude
+  
         id: createHabitId(),
-
+  
+        type: habit.type || HABIT_TYPES.TODO,
+  
         color: habit.color || "coral",
-
+  
         completedDates: [],
       };
-
+  
       return [
         ...currentHabits,
         newHabit,
       ];
     });
   }
+  
 
   function deleteHabit(habitId) {
     setHabits(function (currentHabits) {

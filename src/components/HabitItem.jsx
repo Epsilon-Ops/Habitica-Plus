@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import habitColors from "../colors/habitColors";
-
+import {
+  getHabitTypeLabel,
+} from '../constants/habitTypes';
 import { habitIcons } from "../icons/habitIcons";
 import HabitHistory from "./HabitHistory";
 
@@ -43,6 +45,13 @@ function HabitItem({
         <h2 className="habit-item__title">
           {habit.title}
         </h2>
+
+        <span className="habit-item__type">
+          {habit.type === 'daily' && 'Quotidienne'}
+          {habit.type === 'weekly' && 'Hebdomadaire'}
+          {habit.type === 'monthly' && 'Mensuelle'}
+          {habit.type === 'todo' && 'Une fois'}
+        </span>
 
         {habit.description && (
           <p className="habit-item__description">

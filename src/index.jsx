@@ -11,6 +11,7 @@ import "./styles/iconPicker.css";
 import "./styles/habitHistory.css";
 import "./styles/confirmModal.css";
 import "./styles/colorPicker.css";
+import "./styles/habitTypePicker.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

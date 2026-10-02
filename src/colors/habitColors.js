@@ -650,6 +650,190 @@ const habitColors = {
     completed: "#FBD8EA",
     completedAccent: "#FEF0F7",
   },
+
+  // ─────────────────────────────
+  // GRIS & NEUTRES
+  // ─────────────────────────────
+
+  charcoal: {
+    name: "Anthracite",
+    base: "#374151",
+    accent: "#9CA3AF",
+    completed: "#E5E7EB",
+    completedAccent: "#F3F4F6",
+  },
+
+  slate: {
+    name: "Ardoise",
+    base: "#475569",
+    accent: "#94A3B8",
+    completed: "#E2E8F0",
+    completedAccent: "#F1F5F9",
+  },
+
+  graphite: {
+    name: "Graphite",
+    base: "#4B5563",
+    accent: "#9CA3AF",
+    completed: "#E5E7EB",
+    completedAccent: "#F3F4F6",
+  },
+
+  silver: {
+    name: "Argent",
+    base: "#6B7280",
+    accent: "#B6BCC7",
+    completed: "#E5E7EB",
+    completedAccent: "#F5F6F8",
+  },
+
+  ash: {
+    name: "Cendre",
+    base: "#737373",
+    accent: "#B8B8B8",
+    completed: "#E5E5E5",
+    completedAccent: "#F5F5F5",
+  },
+
+  stone: {
+    name: "Pierre",
+    base: "#78716C",
+    accent: "#B8B1AC",
+    completed: "#E7E5E4",
+    completedAccent: "#F5F5F4",
+  },
+
+  smoke: {
+    name: "Fumée",
+    base: "#52525B",
+    accent: "#A1A1AA",
+    completed: "#E4E4E7",
+    completedAccent: "#F4F4F5",
+  },
+
+  pewter: {
+    name: "Étain",
+    base: "#64748B",
+    accent: "#AEB8C4",
+    completed: "#E2E7ED",
+    completedAccent: "#F5F7F9",
+  },
+
+  iron: {
+    name: "Fer",
+    base: "#3F4650",
+    accent: "#8E98A5",
+    completed: "#DDE1E6",
+    completedAccent: "#F1F3F5",
+  },
+
+  silverGray: {
+    name: "Gris argent",
+    base: "#858B94",
+    accent: "#C1C5CB",
+    completed: "#E8EAED",
+    completedAccent: "#F6F7F8",
+  },
+
+  coolGray: {
+    name: "Gris froid",
+    base: "#59636E",
+    accent: "#AAB3BC",
+    completed: "#DEE3E8",
+    completedAccent: "#F2F4F6",
+  },
+
+  warmGray: {
+    name: "Gris chaud",
+    base: "#6B625D",
+    accent: "#B8ADA6",
+    completed: "#E8E3DF",
+    completedAccent: "#F6F3F1",
+  },
+
+  neutralGray: {
+    name: "Gris neutre",
+    base: "#666666",
+    accent: "#AAAAAA",
+    completed: "#E5E5E5",
+    completedAccent: "#F5F5F5",
+  },
+
+  concrete: {
+    name: "Béton",
+    base: "#707070",
+    accent: "#B5B5B5",
+    completed: "#E6E6E6",
+    completedAccent: "#F4F4F4",
+  },
+
+  graphiteDark: {
+    name: "Graphite foncé",
+    base: "#30343B",
+    accent: "#858B95",
+    completed: "#D9DCE1",
+    completedAccent: "#EFF1F3",
+  },
+
+  black: {
+    name: "Noir",
+    base: "#1F2937",
+    accent: "#6B7280",
+    completed: "#D1D5DB",
+    completedAccent: "#F3F4F6",
+  },
+
+  // ─────────────────────────────
+  // BLANCS
+  // ─────────────────────────────
+
+  white: {
+    name: "Blanc",
+    base: "#FFFFFF",
+    accent: "#D9D9D9",
+    completed: "#F2F2F2",
+    completedAccent: "#FAFAFA",
+  },
+
+  snow: {
+    name: "Neige",
+    base: "#FAFAFA",
+    accent: "#D6D6D6",
+    completed: "#F0F0F0",
+    completedAccent: "#F8F8F8",
+  },
+
+  ivory: {
+    name: "Ivoire",
+    base: "#FFFFF0",
+    accent: "#DCDCC8",
+    completed: "#F4F4E8",
+    completedAccent: "#FAFAF2",
+  },
+
+  pearl: {
+    name: "Perle",
+    base: "#F5F5F5",
+    accent: "#CCCCCC",
+    completed: "#EAEAEA",
+    completedAccent: "#F9F9F9",
+  },
+
+  cloud: {
+    name: "Nuage",
+    base: "#F1F3F5",
+    accent: "#C5CAD0",
+    completed: "#E6E9EC",
+    completedAccent: "#F8F9FA",
+  },
+
+  cream: {
+    name: "Crème",
+    base: "#FFFDF5",
+    accent: "#E5DFC9",
+    completed: "#F7F3E5",
+    completedAccent: "#FCFAF2",
+  }
 };
 
 export default habitColors;

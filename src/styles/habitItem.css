@@ -1037,3 +1037,55 @@
     }
   }
   
+  .habit-item__type {
+    display: inline-flex;
+    align-items: center;
+  
+    margin-top: 3px;
+    padding: 3px 8px;
+  
+    border-radius: 999px;
+  
+    background: color-mix(
+      in srgb,
+      var(--habit-base) 8%,
+      white
+    );
+  
+    color: color-mix(
+      in srgb,
+      var(--habit-base) 70%,
+      #737373
+    );
+  
+    font-size: 11px;
+    font-weight: 650;
+    line-height: 1.2;
+  
+    transition:
+      background 0.4s ease,
+      color 0.4s ease,
+      transform 0.4s ease;
+  }
+  
+  .habit-item:hover .habit-item__type {
+    transform: translateY(-1px);
+  
+    background: color-mix(
+      in srgb,
+      var(--habit-base) 12%,
+      white
+    );
+  }
+
+  .habit-item--completed .habit-item__type {
+    color: #737373;
+  
+    background: color-mix(
+      in srgb,
+      var(--habit-completed) 10%,
+      white
+    );
+  }
+  
+  
