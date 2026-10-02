@@ -1,0 +1,30 @@
+Features :
+- [-] Créer des habitudes illimitées
+- [-] Habitudes Quotidiennes, Hebdomadaires, Mensuelles
+- [-] Jours spécifiques pour les habitudes
+- [-] Groupes d'Habitudes
+- [-] Marquer comme réussie ou non
+- [-] Modifier la progression d'une habitude pour des habitudes (mères)
+- [-] Rappels personnalisés
+- [-] Chronomètre pour les habitudes à timer
+- [-] Séries / Streaks
+- [-] Icônes et couleurs
+- [-] Mode sombre
+- [-] Widgets
+- [-] Syncroniser avec son mail
+- [-] Écran statistique
+- [-] Ajustement de planning grâce au plan de répétition
+- [-] Suppression d'habitude
+- [-] Exclusion de certaines habitudes du calcul de progrès quotidien
+- [-] Echec d'habitudes
+- [-] Alertes à intervalles réguliers
+- [-] Empecher l'écran de s'éteindre pendant le timer
+- [-] Graphique de progression
+- [-] Graphique en barre
+- [-] Graphique en grille
+- [-] Graphique en ligne
+- [-] Graphique intérractif
+- [-] Selection de données dans les graphiques
+- [-] Récapitulatif Hebdomadaire / Mensuel
+- [-] Stats détaillées
+- [-] Visualisation de progression dans liste d'habitude
